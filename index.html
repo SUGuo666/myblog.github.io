@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>小君的Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        
+        section {
+            padding: 20px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .slideshow {
+            width: 1200px;
+            height: 640px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+			padding: 0;
+        }
+        
+        .slideshow img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slideshow .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .slideshow .active {
+            opacity: 1;
+        }
+		
+		<!--加渐变效果-->
+		.slideshow .slide img {
+		    position: relative;
+		    z-index: 1;
+		}
+		
+		.slideshow .slide:before {
+		    content: "";
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    width: 100%;
+		    height: 100%;
+		    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+		    z-index: 2;
+		}
+		
+    </style>
+	<style>
+		.organe {
+		  display: flex;
+		  justify-content: center;
+		  align-items: center;
+		  font-size: 30px;
+		  height: 20px; /* 可视区域的高度 */
+		}
+		.time1{
+			text-align: center;
+			height: 10px; /* 可视区域的高度 */
+			font-size: 25px;
+		}
+	</style>
+</head>
+<body>
+    <header>
+        <h1>小 君 的 Blog </h1>
+		<b>欢迎来到我的Blog</>
+		
+		
+    </header>
+    
+<!--导航栏设置-->
+    <nav>
+        <ul>
+            <li><a href="index.html">首  页</a></li>
+            <li><a href="http://site-xiaojun.zkeasoft.com/index">论  坛</a></li>
+            <li><a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=m3MrsqlqINQqcS0sUzRzeUN_yRCEOocE&authKey=xp%2BO%2BHwHVGvne%2For5Ssn8iBKCP4m8v8cO7vjcCxarNJPZ03Z3cJRhE0h%2FlAacR0h&noverify=0&group_code=366345650">联系我们</a></li>
+        </ul>
+    </nav>
+	
+	<!--导入当前时间-->
+	<p class="time1">当前时间为</p>
+	<p id="current-time" class="organe"></p>
+	
+<!--幻灯片图片-->
+    <section>
+        <div class="slideshow">
+            <div class="slide active">
+                <img src="picture/1.png" alt="Image 1">
+            </div>
+            <div class="slide">
+                <img src="picture/2.jpg" alt="Image 2">
+            </div>
+            <div class="slide">
+                <img src="picture/3.jpg" alt="Image 3">
+            </div>
+        </div>
+    </section>
+	
+    <footer>
+        <p>版权所有 &copy; 2023 小君的Blog</p>
+    </footer>
+	
+    <!--幻灯片配置-->
+    <script>
+        var slides = document.querySelectorAll('.slide');
+        var currentSlide = 0;
+        var slideInterval = setInterval(nextSlide, 4000);
+        
+        function nextSlide() {
+            slides[currentSlide].className = 'slide';
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].className = 'slide active';
+        }
+		
+		// 获取当前时间并更新页面
+		function updateCurrentTime() {
+		  var currentTime = new Date();
+		  var hours = currentTime.getHours();
+		  var minutes = currentTime.getMinutes();
+		  var seconds = currentTime.getSeconds();
+		
+		  // 格式化时间，确保各个部分始终是两位数
+		  hours = ('0' + hours).slice(-2);
+		  minutes = ('0' + minutes).slice(-2);
+		  seconds = ('0' + seconds).slice(-2);
+		
+		  var timeString = hours + ':' + minutes + ':' + seconds;
+		
+		  // 将时间显示在页面上
+		  document.getElementById('current-time').textContent = timeString;
+		}
+		
+		// 每秒更新一次时间
+		setInterval(updateCurrentTime, 1000);
+		
+		
+    </script>
+</body>
+</html>
