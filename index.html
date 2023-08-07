@@ -2,13 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>小君的Blog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+			height: 1062px;
+			width: 390px;
         }
         
         header {
@@ -49,9 +51,10 @@
         }
         
         .slideshow {
-            width: 1080px;
-            height: 450px;
+            width: 350px;
+            height: 200px;
             overflow: hidden;
+			border-radius: 20px;
             position: relative;
             margin: 0 auto;
 			padding: 0;
@@ -94,7 +97,7 @@
 		}
 		
     </style>
-	<style>
+	<style> 
 		.organe {
 		  display: flex;
 		  justify-content: center;
@@ -107,20 +110,17 @@
 			height: 10px; /* 可视区域的高度 */
 			font-size: 25px;
 		}
-		/*自应适*/
-		@media (max-width: 480px) {
-		  /* 当屏幕宽度小于等于480px时应用的样式 */
+		
+		@media (max-width: 767px) {
+		  .desktop-only {
+		    display: none;
+		  }
 		}
 		
-		@media (max-width: 768px) {
-		  /* 当屏幕宽度小于等于768px时应用的样式 */
+		iframe{
+			height: 600px;
+			width: 380px;
 		}
-		
-		@media (max-width: 1024px) {
-		  /* 当屏幕宽度小于等于1024px时应用的样式 */
-		}
-		
-		
 	</style>
 </head>
 <body>
@@ -136,6 +136,7 @@
         <ul>
             <li><a href="index.html">首  页</a></li>
             <li><a href="http://site-xiaojun.zkeasoft.com/index">论  坛</a></li>
+			<li><a href="article.html">文  章</a></li>
             <li><a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=m3MrsqlqINQqcS0sUzRzeUN_yRCEOocE&authKey=xp%2BO%2BHwHVGvne%2For5Ssn8iBKCP4m8v8cO7vjcCxarNJPZ03Z3cJRhE0h%2FlAacR0h&noverify=0&group_code=366345650">联系我们</a></li>
         </ul>
     </nav>
@@ -158,6 +159,8 @@
             </div>
         </div>
     </section>
+	
+	<iframe src="juji.html"></iframe>
 	
     <footer>
         <p>版权所有 &copy; 2023 小君的Blog</p>
@@ -195,8 +198,15 @@
 		
 		// 每秒更新一次时间
 		setInterval(updateCurrentTime, 1000);
-		
-		
     </script>
+	<script>
+		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+		    // 是手机端，不进行任何操作
+		  } else {
+		    // 不是手机端，将整个页面内容替换为提示信息
+			window.location.href = "404.html";
+		   
+		  }
+	</script>
 </body>
 </html>
